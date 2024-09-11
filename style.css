@@ -4,7 +4,7 @@
 }
 
 @font-face {
-  font-family: TAS;
+  font-family: TheAmbientStream;
   src: url(assets/fonts/the-ambient-stream/TheAmbientStream.otf);
 }
 
@@ -68,18 +68,17 @@ body {
 }
 
 .preloader {
+  margin: 0;
+  padding: 0;
   height: 100vh;
-  overflow: hidden;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  right: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: var(--pink);
-  animation: change-bg 3s ease forwards, FadeOut 1.5s ease-in-out 2.5s forwards;
-  opacity: 1; /* Start fully visible */
-  transform: scale(1); /* No scaling initially */
-  filter: blur(0); /* No blur initially */
-  visibility: visible;
-  z-index: -9999;
 }
 
 .preloader > svg {
@@ -88,53 +87,74 @@ body {
   fill-opacity: 1;
   stroke-width: 7px;
   stroke-dasharray: 4500;
-  animation: opacity-fill 3s ease-in-out;
 }
 
 #main-container {
-  z-index: -1000;
-  animation: FadeIn 2s ease-in forwards;
   border: 2px solid blue;
   display: flex;
-
+  flex-direction: row;
+  justify-items: center;
+  align-items: center;
   margin-top: 10vh;
-}
-
-#header > .hidden,
-#main-container > .hidden {
-  display: none;
 }
 
 .intro {
   width: 100vw;
-  border: 2px solid rgb(255, 247, 0);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  min-height: 70vh;
+  border: 2px solid rgb(0, 157, 255);
 }
 
 .intro > p {
   font-family: TAS;
   font-size: 4.5em;
   color: white;
-  order: 2px solid rgb(0, 157, 255);
+  border: 2px solid rgb(0, 157, 255);
 }
 
 #header {
   position: fixed;
   top: 0;
+  right: 0;
   width: 100vw;
   height: 8vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid red;
 }
 
 #header > svg {
   width: 10vw;
   height: 5vh;
   filter: invert();
-  border: 2px solid red;
+}
+
+#heart {
+  height: 40px;
+  width: 40px;
+  filter: invert(100);
+  filter: brightness(1000);
+  padding-inline: 0.5rem;
+  stroke: white;
+  stroke-width: 0.2px;
+}
+
+#meet {
+  color: white;
+  font-size: 4rem;
+  font-family: TheAmbientStream;
+  height: 4.5rem;
+}
+
+#gf {
+  color: white;
+  font-size: 4rem;
+  font-family: TheAmbientStream;
+  display: flex;
+  align-items: center;
+  height: 4rem;
 }
