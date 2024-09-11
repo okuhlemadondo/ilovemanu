@@ -1,0 +1,140 @@
+:root {
+  --purple: rgb(47, 0, 92);
+  --pink: #ec00f9;
+}
+
+@font-face {
+  font-family: TAS;
+  src: url(assets/fonts/the-ambient-stream/TheAmbientStream.otf);
+}
+
+@keyframes opacity-fill {
+  0% {
+    fill-opacity: 0;
+    stroke-dasharray: 0;
+  }
+  100% {
+    fill-opacity: 1;
+    stroke-dasharray: 4500;
+  }
+}
+
+@keyframes change-bg {
+  0% {
+    background-color: var(--purple);
+  }
+  100% {
+    background-color: var(--pink);
+  }
+}
+
+@keyframes FadeOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+    z-index: 9999;
+    display: flex;
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.1);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.9);
+    filter: blur(5px);
+    visibility: hidden;
+    z-index: -1000;
+    display: none;
+  }
+}
+
+@keyframes FadeIn {
+  0% {
+    z-index: -9999;
+  }
+  100% {
+    z-index: 1000;
+  }
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+}
+
+.preloader {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--pink);
+  animation: change-bg 3s ease forwards, FadeOut 1.5s ease-in-out 2.5s forwards;
+  opacity: 1; /* Start fully visible */
+  transform: scale(1); /* No scaling initially */
+  filter: blur(0); /* No blur initially */
+  visibility: visible;
+  z-index: -9999;
+}
+
+.preloader > svg {
+  width: clamp(120px, 20%, 800px);
+  stroke: var(--purple);
+  fill-opacity: 1;
+  stroke-width: 7px;
+  stroke-dasharray: 4500;
+  animation: opacity-fill 3s ease-in-out;
+}
+
+#main-container {
+  z-index: -1000;
+  animation: FadeIn 2s ease-in forwards;
+  border: 2px solid blue;
+  display: flex;
+
+  margin-top: 10vh;
+}
+
+#header > .hidden,
+#main-container > .hidden {
+  display: none;
+}
+
+.intro {
+  width: 100vw;
+  border: 2px solid rgb(255, 247, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.intro > p {
+  font-family: TAS;
+  font-size: 4.5em;
+  color: white;
+  order: 2px solid rgb(0, 157, 255);
+}
+
+#header {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 8vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid red;
+}
+
+#header > svg {
+  width: 10vw;
+  height: 5vh;
+  filter: invert();
+  border: 2px solid red;
+}
