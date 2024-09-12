@@ -3,12 +3,21 @@ let svg_animate = gsap.timeline();
 
 loader_tl
   .fromTo(".preloader", { opacity: 1 }, { delay: 3, duration: 1.5, opacity: 0 })
-  .fromTo("#header", { opacity: 0 }, { duration: 0.75, opacity: 1 })
-  .fromTo("#heart", { opacity: 0 }, { duration: 0.75, opacity: 1 })
+  .fromTo(
+    "#header, #meet, #gf, #swipe",
+    { opacity: 0 },
+    { duration: 0.75, opacity: 1 }
+  )
+  .fromTo(
+    "#heart, .img-fade, .her",
+    { opacity: 0 },
+    { duration: 0.75, opacity: 1 }
+  )
+  .fromTo(".carousel", { opacity: 0 }, { duration: 1.5, opacity: 1 })
   .to("#header > svg", {
     rotation: 360,
     duration: 1,
-    repeatDelay: 7,
+    repeatDelay: 5,
     ease: "power2.inOut",
     repeat: Infinity,
   });
@@ -31,11 +40,22 @@ svg_animate.fromTo(
     duration: 4,
     fillOpacity: 1,
     strokeDasharray: 4500,
-    ease: "circ.inOut",
+    ease: "power4.inOut",
   }
 );
-setTimeout(() => {
-  preloader.style.display = "none";
-  // Re-enable scrolling
-  document.body.style.overflow = "auto";
-}, 1000);
+
+gsap.fromTo(
+  ".quotes",
+  {
+    x: "-100%",
+  },
+  { x: "0%", duration: 20, delay: 4, repeat: Infinity, ease: "none" }
+);
+
+gsap.to("#swipe-down > img", {
+  delay: 5,
+  y: 10,
+  duration: 0.7,
+  repeat: Infinity,
+  yoyo: true,
+});
