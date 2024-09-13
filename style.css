@@ -23,6 +23,7 @@ body {
   padding: 0;
   background-color: black;
   overflow-x: hidden;
+  overflow-y: visible;
 }
 
 .preloader {
@@ -48,12 +49,12 @@ body {
 }
 
 #main-container {
-  display: flex;
   flex-direction: row;
   justify-items: center;
   align-items: center;
   margin-top: 10vh;
   width: 100vw;
+  overflow-x: hidden;
 }
 
 .intro {
@@ -102,6 +103,7 @@ body {
   padding-inline: 0.5rem;
   stroke: white;
   stroke-width: 0.2px;
+  z-index: 1001;
 }
 
 #meet {
@@ -197,4 +199,12 @@ body {
   height: 2rem;
   filter: invert();
   filter: brightness(-10000);
+}
+
+.section-two {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  background: linear-gradient(to top, rgb(0, 0, 0) 0.1%, black 99.9%);
 }
