@@ -31,6 +31,19 @@ gsap.to("#heart", {
   yoyo: true,
 });
 
+gsap.fromTo(
+  "#cat",
+  { rotation: -20 },
+  {
+    delay: 6,
+    rotation: 20,
+    duration: 0.7,
+    repeat: Infinity,
+    repeatDelay: 5,
+    yoyo: true,
+  }
+);
+
 svg_animate.fromTo(
   ".preloader > svg",
   {
@@ -85,6 +98,7 @@ gsap.to(".her > img", {
     trigger: ".her > img",
     scrub: true,
     start: "-90px top",
+    end: "center top",
   },
   opacity: 0,
 });
@@ -139,4 +153,39 @@ gsap.to("#swipe-down > img", {
     end: "top 10%",
   },
   height: "0rem",
+});
+
+gsap.to(".her-2 img", {
+  scrollTrigger: {
+    trigger: ".her-2 > img",
+    scrub: 1.5,
+    start: "top center",
+    end: "bottom bottom"
+  },
+  "filter": "brightness(100%)",
+});
+
+const paragraphs = document.querySelectorAll(".text-background p");
+
+// Loop through each paragraph and create animations
+paragraphs.forEach(p => {
+  // Create a repeating animation with random parameters
+  function randomizePositionAndRotation() {
+    // Set random position and rotation before the animation begins
+    gsap.set(p, {
+      x: gsap.utils.random(0, window.innerWidth - p.offsetWidth),  // Random horizontal position
+      y: gsap.utils.random(0, (0.65 * window.innerHeight) - p.offsetHeight),               // Random vertical position within the parent height
+      rotation: gsap.utils.random(-35, 35)                        // Random rotation between -90 and 90 degrees
+    });
+  }
+  gsap.to(p, {
+    duration: gsap.utils.random(1, 2),  // Random duration between 2 and 4 seconds
+    opacity: 1,                        // Fade in
+    scale: 1.2,                        // Grow slightly
+    ease: "power2.out",                // Smooth easing for the fade-in/grow effect
+    repeat: -1,
+    repeatRefresh: true,                       // Infinite loop
+    yoyo: true,                        // Reverse animation (shrink and fade out)
+    onStart: randomizePositionAndRotation,
+  });
 });

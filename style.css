@@ -3,10 +3,6 @@
   --pink: #ec00f9;
 }
 
-/* * {
-  border: 2px solid red;
-} */
-
 @font-face {
   font-family: TheAmbientStream;
   src: url(assets/fonts/the-ambient-stream/TheAmbientStream.otf);
@@ -17,6 +13,11 @@
   src: url(assets/fonts/Raleway/static/Raleway-LightItalic.ttf);
 }
 
+@font-face {
+  font-family: Grundschrift;
+  src: url(assets/fonts/grundschrift/Grundschrift-Bold.otf);
+}
+
 html,
 body {
   margin: 0;
@@ -24,6 +25,11 @@ body {
   background-color: black;
   overflow-x: hidden;
   overflow-y: visible;
+  width: 100vw;
+}
+
+.landing {
+  height: 90vh;
 }
 
 .preloader {
@@ -61,20 +67,11 @@ body {
   width: 99vw;
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: end;
   align-items: center;
   text-align: center;
-  min-height: 65vh;
-}
-
-.img-fade {
-  /* border: 2px solid rgb(0, 255, 8); */
-  position: relative;
-  bottom: 3.2rem;
-  z-index: 1000;
-  height: 3rem;
-  width: 9rem;
-  background: linear-gradient(to top, black, rgba(0, 0, 0, 0));
+  height: 65vh;
+  margin-bottom: 3vh;
 }
 
 #header {
@@ -123,14 +120,28 @@ body {
   height: 4rem;
 }
 
-.her > img {
-  width: 45%;
-  margin-top: 2rem;
-  /* border: 2px solid red; */
+.her {
+  height: 66%;
+  margin-top: 3vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 1%;
 }
 
-.landing {
-  height: 90vh;
+.her > img {
+  height: 95%;
+  width: auto;
+}
+
+.img-fade {
+  position: absolute;
+  bottom: 2%;
+  z-index: 1000;
+  height: 20%;
+  width: 100%;
+  background: linear-gradient(to top, black, rgba(0, 0, 0, 0));
 }
 
 .carousel {
@@ -140,22 +151,22 @@ body {
   justify-content: center;
   white-space: nowrap;
   border-block: 1px solid rgb(24, 24, 24);
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 .quotes {
   display: flex;
-  flex-direction: row;
-  /* white-space: nowrap; */
-  /* border: 2px solid red; */
 }
 
 .quotes div {
   color: rgb(255, 255, 255);
-  /* border: 2px solid rgb(255, 230, 0); */
   width: fit-content;
   text-wrap: no-wrap;
   text-align: center;
   margin: 0 0.7rem;
+  overflow: hidden;
 }
 
 .quotes > div > p {
@@ -166,9 +177,8 @@ body {
 .border2 {
   position: absolute;
   height: 7vh;
-  width: 10%;
-  margin: 0;
-  padding: 0;
+  width: 9%;
+  z-index: 2000;
 }
 
 .border1 {
@@ -177,7 +187,7 @@ body {
 }
 
 .border2 {
-  right: -1px;
+  right: 0;
   background: linear-gradient(to left, rgb(0, 0, 0), rgba(0, 0, 0, 0));
 }
 
@@ -187,6 +197,7 @@ body {
   justify-content: center;
   align-items: center;
   width: 100vw;
+  height: 8vh;
 }
 
 #swipe-down {
@@ -207,4 +218,45 @@ body {
   width: 100vw;
   overflow-x: hidden;
   background: linear-gradient(to top, rgb(0, 0, 0) 0.1%, black 99.9%);
+  align-items: end;
+  justify-content: center;
+}
+
+#cat {
+  position: fixed;
+  bottom: 5%;
+  right: 10%;
+  border: 3px solid red;
+  filter: invert();
+  height: 2.2rem;
+}
+
+.her-2 {
+  height: 65vh;
+  width: 49vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.her-2 img {
+  height: 100%;
+  filter: brightness(0%);
+  z-index: 3;
+}
+
+.text-background {
+  position: absolute;
+  height: 99.5%;
+  width: 100%;
+}
+
+.text-background p {
+  position: absolute;
+  white-space: nowrap;
+  opacity: 0;
+  color: rgb(22, 0, 43);
+  font-size: 1.1rem;
+  border: 0px solid red;
+  font-family: Grundschrift;
 }
