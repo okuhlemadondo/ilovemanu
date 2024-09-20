@@ -23,27 +23,6 @@ loader_tl
     repeat: Infinity,
   });
 
-gsap.to("#heart", {
-  delay: 5,
-  scale: 0.5,
-  duration: 0.7,
-  repeat: Infinity,
-  yoyo: true,
-});
-
-gsap.fromTo(
-  "#cat",
-  { rotation: -20 },
-  {
-    delay: 6,
-    rotation: 20,
-    duration: 0.7,
-    repeat: Infinity,
-    repeatDelay: 5,
-    yoyo: true,
-  }
-);
-
 svg_animate.fromTo(
   ".preloader > svg",
   {
@@ -57,22 +36,6 @@ svg_animate.fromTo(
     ease: "power4.inOut",
   }
 );
-
-gsap.fromTo(
-  ".quotes",
-  {
-    x: "-50%",
-  },
-  { x: "50%", duration: 20, delay: 4, repeat: Infinity, ease: "none" }
-);
-
-gsap.to("#swipe-down > img", {
-  delay: 5,
-  y: 10,
-  duration: 0.7,
-  repeat: Infinity,
-  yoyo: true,
-});
 
 const button = document.getElementById("swipe-down");
 
@@ -117,7 +80,7 @@ gsap.to("#heart", {
 gsap.to(".section-two", {
   scrollTrigger: {
     trigger: ".section-two",
-    scrub: 1,
+    scrub: 1.8,
     start: "top 80%",
     end: "top 10%",
   },
@@ -155,7 +118,7 @@ gsap.to("#swipe-down > img", {
   height: "0rem",
 });
 
-gsap.to(".her-2 img", {
+gsap.to(".her-2 img, .award", {
   scrollTrigger: {
     trigger: ".her-2 > img",
     scrub: 1.5,
@@ -165,27 +128,135 @@ gsap.to(".her-2 img", {
   "filter": "brightness(100%)",
 });
 
-const paragraphs = document.querySelectorAll(".text-background p");
+gsap.from(".best-gf button", {
+  scrollTrigger: {
+    trigger: ".award",
+    scrub: 1.5,
+    start: "top center",
+    end: "top",
 
-// Loop through each paragraph and create animations
-paragraphs.forEach(p => {
-  // Create a repeating animation with random parameters
-  function randomizePositionAndRotation() {
-    // Set random position and rotation before the animation begins
-    gsap.set(p, {
-      x: gsap.utils.random(0, window.innerWidth - p.offsetWidth),  // Random horizontal position
-      y: gsap.utils.random(0, (0.65 * window.innerHeight) - p.offsetHeight),               // Random vertical position within the parent height
-      rotation: gsap.utils.random(-35, 35)                        // Random rotation between -90 and 90 degrees
-    });
-  }
-  gsap.to(p, {
-    duration: gsap.utils.random(1, 2),  // Random duration between 2 and 4 seconds
-    opacity: 1,                        // Fade in
-    scale: 1.2,                        // Grow slightly
-    ease: "power2.out",                // Smooth easing for the fade-in/grow effect
-    repeat: -1,
-    repeatRefresh: true,                       // Infinite loop
-    yoyo: true,                        // Reverse animation (shrink and fade out)
-    onStart: randomizePositionAndRotation,
-  });
+  },
+  y: 80,
+  opacity: 0
 });
+
+const words = function () {
+  const paragraphs = document.querySelectorAll(".text-background p");
+  const triggerElement = document.querySelector('.best-gf button'); // The element to observe
+  const animations = []; // Array to store the GSAP tween instances
+
+  // Loop through each paragraph and create animations
+  paragraphs.forEach(p => {
+    // Function to randomize position and rotation
+    function randomizePositionAndRotation() {
+      gsap.set(p, {
+        x: gsap.utils.random([gsap.utils.random(0 + (p.offsetWidth / 2), 0.25 * window.innerWidth, true), gsap.utils.random(0.6 * window.innerWidth, window.innerWidth - p.offsetWidth, true)]),
+        y: gsap.utils.random(0, (0.65 * window.innerHeight) - p.offsetHeight * 2),
+        rotation: gsap.utils.random(-17, 17)
+      });
+    }
+
+    // Create the animation and store the tween instance
+    const tween = gsap.to(p, {
+      duration: gsap.utils.random(1.2, 2.2),
+      opacity: 1,
+      scale: 1.2,
+      ease: "power2.out",
+      repeat: -1,
+      repeatRefresh: true,
+      yoyo: true,
+      onStart: randomizePositionAndRotation,
+    });
+
+    animations.push(tween); // Store the tween in the array
+  });
+
+  // Intersection Observer to check if the trigger element is in the viewport
+  const observerCallback = (entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) {
+        // If the trigger element is not in the viewport, pause all animations
+        animations.forEach(tween => {
+          tween.pause();
+        });
+      } else {
+        // If the trigger element is in the viewport, resume all animations
+        animations.forEach(tween => {
+          tween.resume();
+        });
+      }
+    });
+  };
+
+  const observer = new IntersectionObserver(observerCallback, {
+    root: null, // Use the viewport as the root
+    threshold: 0.1 // Trigger when at least 10% of the element is visible
+  });
+
+  observer.observe(triggerElement); // Start observing the trigger element
+};
+
+// Call the function to set up animations
+words();
+
+
+// Create an array to store the tween instances
+const tweens = [];
+
+// Create the tweens and store them in the array
+tweens.push(
+  gsap.to("#heart", {
+    delay: 5,
+    scale: 0.5,
+    duration: 0.7,
+    repeat: Infinity,
+    yoyo: true,
+  })
+);
+
+tweens.push(
+  gsap.fromTo(
+    ".quotes",
+    { x: "-50%" },
+    { x: "50%", duration: 20, delay: 4, repeat: Infinity, ease: "none" }
+  )
+);
+
+tweens.push(
+  gsap.to("#swipe-down > img", {
+    delay: 5,
+    y: 10,
+    duration: 0.7,
+    repeat: Infinity,
+    yoyo: true,
+  })
+);
+
+// Define the element to observe
+const triggerElement = document.querySelector('.her'); // Replace with your selector
+
+// Intersection Observer callback
+const observerCallback = (entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) {
+      // If the trigger element is not in the viewport, pause all tweens
+      tweens.forEach(tween => {
+        tween.pause();
+      });
+    } else {
+      // If the trigger element is in the viewport, resume all tweens
+      tweens.forEach(tween => {
+        tween.resume();
+      });
+    }
+  });
+};
+
+// Create the Intersection Observer
+const observer = new IntersectionObserver(observerCallback, {
+  root: null, // Use the viewport as the root
+  threshold: 0.1 // Trigger when at least 10% of the element is visible
+});
+
+// Start observing the trigger element
+observer.observe(triggerElement);

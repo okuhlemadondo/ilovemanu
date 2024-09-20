@@ -14,6 +14,11 @@
 }
 
 @font-face {
+  font-family: RalewayBold;
+  src: url(assets/fonts/Raleway/static/Raleway-Bold.ttf);
+}
+
+@font-face {
   font-family: Grundschrift;
   src: url(assets/fonts/grundschrift/Grundschrift-Bold.otf);
 }
@@ -64,7 +69,7 @@ body {
 }
 
 .intro {
-  width: 99vw;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: end;
@@ -84,6 +89,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 9000;
 }
 
 #header > svg {
@@ -138,7 +144,7 @@ body {
 .img-fade {
   position: absolute;
   bottom: 2%;
-  z-index: 1000;
+  z-index: 10;
   height: 20%;
   width: 100%;
   background: linear-gradient(to top, black, rgba(0, 0, 0, 0));
@@ -214,21 +220,15 @@ body {
 
 .section-two {
   display: flex;
+  flex-direction: column;
   height: 100vh;
-  width: 100vw;
-  overflow-x: hidden;
+  width: 102vw;
+  overflow: hidden;
   background: linear-gradient(to top, rgb(0, 0, 0) 0.1%, black 99.9%);
-  align-items: end;
-  justify-content: center;
-}
-
-#cat {
-  position: fixed;
-  bottom: 5%;
-  right: 10%;
-  border: 3px solid red;
-  filter: invert();
-  height: 2.2rem;
+  align-items: center;
+  justify-content: end;
+  margin: 0;
+  padding: 0;
 }
 
 .her-2 {
@@ -237,6 +237,8 @@ body {
   position: relative;
   display: flex;
   justify-content: center;
+  margin: 0;
+  padding: 0;
 }
 
 .her-2 img {
@@ -247,7 +249,7 @@ body {
 
 .text-background {
   position: absolute;
-  height: 99.5%;
+  height: 99%;
   width: 100%;
 }
 
@@ -257,6 +259,34 @@ body {
   opacity: 0;
   color: rgb(22, 0, 43);
   font-size: 1.1rem;
-  border: 0px solid red;
   font-family: Grundschrift;
+}
+
+.best-gf {
+  height: 28vh;
+  width: 99vw;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 1.2rem;
+}
+
+.award {
+  height: 23vh;
+  filter: brightness(0%);
+}
+
+.best-gf button {
+  border: 1px solid var(--pink);
+  border-radius: 19px;
+  padding: 0.7rem 1.1rem;
+  background-color: #2f0032;
+}
+
+.best-gf button a {
+  text-decoration: none;
+  color: #ec00f9;
+  font-family: RalewayBold;
 }
