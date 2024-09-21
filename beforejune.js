@@ -27,3 +27,46 @@ scrollableDiv.addEventListener('scroll', function () {
     gsap.to("span", { "border-top": ` 0.5px solid rgba(255, 0, 234, ${1 - ((100 - scrollProgress) / 100)})` });
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    const audioPlayer = document.getElementById('audio-player');
+    const playBtn = document.getElementById('play-btn');
+    const pauseBtn = document.getElementById('pause-btn');
+    const stopBtn = document.getElementById('stop-btn');
+
+    let isPlaying = false;
+
+    // Play button event
+    playBtn.addEventListener('click', () => {
+        audioPlayer.play();
+        isPlaying = true;
+        updateButtons();
+    });
+
+    // Pause button event
+    pauseBtn.addEventListener('click', () => {
+        audioPlayer.pause();
+        isPlaying = false;
+        updateButtons();
+    });
+
+    // Stop button event
+    stopBtn.addEventListener('click', () => {
+        audioPlayer.pause();
+        audioPlayer.currentTime = 0;
+        isPlaying = false;
+        updateButtons();
+    });
+
+    // Function to update buttons based on audio state
+    function updateButtons() {
+        if (isPlaying) {
+            playBtn.style.display = 'none';
+            pauseBtn.style.display = 'inline-block';
+            stopBtn.style.display = 'inline-block';
+        } else {
+            playBtn.style.display = 'inline-block';
+            pauseBtn.style.display = 'none';
+            stopBtn.style.display = 'none';
+        }
+    }
+});

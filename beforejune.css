@@ -176,3 +176,32 @@ footer div p{
 .scrollable-content h3{
     font-size: 1.7rem;
 }
+
+.music-player{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.music-player button{
+    align-items: center;
+    height: 2rem;
+ 
+    padding: 0;
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.music-player button img{
+    border: none;
+    height: 2rem;
+    width: 2rem;
+    filter: invert();
+    align-self: center;
+    justify-self: center;
+}
+
+#play-btn, #pause-btn, #stop-btn{
+    padding-inline: 0.5rem;
+    border: none;
+}
