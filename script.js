@@ -1,7 +1,14 @@
 gsap.registerPlugin(ScrollTrigger);
 let loader_tl = gsap.timeline();
 let svg_animate = gsap.timeline();
+document.body.style.overflow = 'hidden';
+document.documentElement.style.overflow = 'hidden';
 
+// Enable scrolling after 2 seconds
+setTimeout(function () {
+  document.body.style.overflow = 'auto'; // or 'visible'
+  document.documentElement.style.overflow = 'auto';
+}, 4000); // 2000 milliseconds = 2 seconds
 loader_tl
   .fromTo(".preloader", { opacity: 1 }, { delay: 3, duration: 1.5, opacity: 0 })
   .fromTo(
@@ -22,6 +29,7 @@ loader_tl
     ease: "power2.inOut",
     repeat: Infinity,
   });
+
 
 svg_animate.fromTo(
   ".preloader > svg",
@@ -260,3 +268,7 @@ const observer = new IntersectionObserver(observerCallback, {
 
 // Start observing the trigger element
 observer.observe(triggerElement);
+
+window.onbeforeunload = function () {
+  window.scrollTo(0, 0); // Scroll to top-left corner (x = 0, y = 0)
+};

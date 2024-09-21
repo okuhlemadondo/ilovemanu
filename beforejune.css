@@ -1,0 +1,178 @@
+@font-face {
+    font-family: OpenSans;
+    src: url(assets/fonts/Open_Sans/static/OpenSans-Light.ttf);
+}
+
+@font-face {
+    font-family: Grundschrift-Light;
+    src: url(assets/fonts/Gowun_Batang/GowunBatang-Regular.ttf);
+}
+
+@font-face {
+    font-family: GowunBatang-Bold;
+    src: url(assets/fonts/Raleway/static/Raleway-ExtraBold.ttf);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html, 
+body{
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    overflow-x: hidden;
+    display: flex;
+flex-direction: column;
+background-color: rgba(0, 0, 0, 0);
+}
+
+nav{
+    height: 10vh;
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    background-color: rgba(0, 0, 0, 0.685);
+}
+
+nav div{
+    width: 20vw;
+}
+
+span{
+    position: absolute;
+    width: 0vw;
+    border-top: 0.5px solid rgba(255, 0, 234, 0);
+}
+
+.top{
+    top: 10vh;
+}
+
+.bottom {
+    bottom: 0vh;
+}
+
+.title{
+    color: white;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem;
+}
+
+.ribbon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ribbon img{
+    height: 7vh;
+    filter: invert();
+}
+
+.content{
+    height: 80vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scrollable-container {
+    height: 60vh; /* Set a specific height for the container */
+    width: 80vw; /* Full width */
+    border: 1px solid #ccc; /* Optional: add a border */
+    overflow-y: auto; /* Enable vertical scrolling */
+    background-color: #000000a3; /* Optional: background color */
+    padding: 1rem; /* Optional: padding inside the container */
+    border: 0.5px solid rgba(255, 0, 234, 0);
+    border-radius: 1rem;
+}
+
+.scrollable-content {
+    height: 600px; /* Content height larger than container for scrolling effect */
+    color: white;
+}
+
+.bottom{
+    bottom: 10vh;
+}
+
+footer{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    height: 10vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.685);
+}
+
+footer div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 0.3rem;
+}
+
+footer div p{
+    color: white;
+    font-family: OpenSans;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.05rem;
+}
+
+.head-logo{
+    height: 2rem;
+    width: auto;
+}
+.manu-bg{
+    position: fixed;
+    z-index: -1000;
+    height: 100vh;
+    width: auto;
+}
+
+.venn-diagram{
+    height: 25vh;
+    width: 100%;
+}
+
+.baby-manu, .bitches, .princess{
+    width: 100%;
+    height: auto;
+}
+
+.scrollable-content p{
+    font-size: 1rem;
+    font-family: Grundschrift-Light;
+}
+
+.scrollable-content h1, 
+.scrollable-content h2, 
+.scrollable-content h3{
+    font-family: Grundschrift-Bold;
+}
+
+.scrollable-content h1{
+    font-size: 3rem;
+    text-align: center;
+}
+
+.scrollable-content h2{
+    font-size: 2rem;
+}
+
+.scrollable-content h3{
+    font-size: 1.7rem;
+}

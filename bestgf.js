@@ -1,11 +1,9 @@
-gsap.registerPlugin(ScrollTrigger);
-
 gsap.registerPlugin(CustomEase);
 CustomEase.create("cubic", "0.83, 0, 0.17, 1");
 let text_switch = gsap.timeline({
     repeat: -1,
     yoyo: true,
-    repeatDelay: 1,
+    repeatDelay: 0.5,
 
 });
 

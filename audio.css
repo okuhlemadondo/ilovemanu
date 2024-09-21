@@ -1,0 +1,10 @@
+#audio-button, #stop-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+#audio-button:focus, #stop-button:focus {
+    outline: none;
+}
