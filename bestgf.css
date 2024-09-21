@@ -1,0 +1,181 @@
+/* Container styles */
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap");
+
+@font-face {
+  font-family: GowunBatang-Bold;
+  src: url(assets/fonts/Oswald/static/Oswald-Bold.ttf);
+}
+
+@font-face {
+    font-family: Raleway-EB;
+    src: url(assets/fonts/Raleway/static/Raleway-ExtraBold.ttf);
+}
+/* * {
+  border-sizing: border-box;
+} */
+
+html,
+body {
+  height: 100vh;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  font-family: "PP Neue Montreal";
+  background-color: rgb(57, 15, 60);
+}
+nav {
+  position: fixed;
+  z-index: 5;
+  height: 10vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  background-color: rgb(225, 0, 255);
+  /* padding-inline-start: 0.4rem; */
+  border-bottom-left-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+  align-items: center;
+  justify-content: space-around;
+}
+.sentence-container {
+  position: absolute;
+  width: 30vw; /* Set your desired width */
+  height: 100%; /* Set your desired height */
+  overflow: hidden; /* To ensure the clip-path animations work properly */
+
+  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+  left: 2vw;
+}
+
+.sentence {
+  position: absolute;
+  display: flex;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 1.3rem;
+  font-family: "Dancing Script", cursive;
+  font-weight: 700;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.sentence-1 {
+  z-index: 1;
+  opacity: 0;
+  /* background-color: aqua; */
+}
+/* Initial state for first sentence */
+.sentence-2 {
+  z-index: 2;
+  opacity: 1;
+  /* background-color: red; */
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+p,
+a {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: rgb(57, 15, 60);
+}
+
+.slider {
+  position: absolute;
+  top: 0vh;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  perspective: 200px;
+  perspective-origin: 50% 100%;
+}
+
+.card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: 50vh;
+  border-radius: 10px;
+  border: 0.2rem solid rgba(247, 12, 251, 0.458);
+  overflow: hidden;
+  transform: translate3d(-50%, -50%, 0);
+  background: #000;
+}
+
+.card img {
+  position: absolute;
+  opacity: 0.75;
+}
+
+.copy {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+h1 {
+  position: relative;
+  text-align: center;
+  font-family: Raleway-EB;
+  font-size: 1rem;
+  font-weight: 300;
+  /* letter-spacing: ; */
+  text-transform: uppercase;
+  color: rgb(225, 0, 255);
+  margin: 0;
+  padding: 0;
+  word-break: normal;     /* Prevents breaking within words */
+    white-space: normal;    /* Allows wrapping at word boundaries */
+    overflow-wrap: normal;
+}
+
+h1 span {
+  position: relative;
+  display: inline-block;
+}
+
+.kitty-container {
+  position: absolute;
+  /* border: 2px solid blue; */
+  width: 10vw;
+  height: 8vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1200;
+}
+
+.kitty-container img {
+  height: 100%;
+  width: auto;
+}
+
+.face {
+  height: 8vh;
+  width: auto;
+  border-radius: 5rem;
+}
+
+.face-container {
+  position: absolute;
+  right: 10vw;
+}
