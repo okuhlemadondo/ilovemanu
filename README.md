@@ -1,3 +1,3 @@
 # ilovemanu
 
-Here's a [link](ilovemanuela.co.za)
+Here's a [link](https://ilovemanuela.co.za)
